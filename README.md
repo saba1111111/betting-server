@@ -4,21 +4,6 @@ A full-stack online betting dashboard built with Node.js, Express, PostgreSQL, R
 
 ---
 
-## Table of Contents
-
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Scalability & Abstraction](#scalability--abstraction)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Docker & Docker Compose](#docker--docker-compose)
-  - [Local Development](#local-development)
-- [Running Tests](#running-tests)
-- [API Endpoints](#api-endpoints)
-- [License](#license)
-
----
-
 ## Features
 
 - **Backend (Node.js/Express/TypeScript):**
