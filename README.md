@@ -45,31 +45,6 @@ A full-stack online betting dashboard built with Node.js, Express, PostgreSQL, R
 
 ---
 
-## Project Structure
-
-my-express-app/ ├── .env # Environment variables ├── knexfile.ts # Knex configuration for migrations and seeds ├── docker-compose.yml # Docker Compose file to run services (backend, PostgreSQL, Redis) ├── Dockerfile # Dockerfile for the backend ├── package.json ├── tsconfig.json └── src/ ├── app.ts # Express app configuration (includes CORS) ├── server.ts # Entry point: runs DB migrations, seeders, then starts the server ├── config/ │ └── db.ts # Knex DB connection configuration ├── cache/ │ ├── redisClient.ts # Redis client configuration (with fallback for bcrypt) │ └── cache.service.ts# Cache abstraction (get, set, delete, delete by pattern) ├── database/ │ └── init.ts # Runs migrations and seeders on startup └── modules/ ├── auth/ # Authentication module │ ├── auth.interfaces.ts │ ├── auth.repository.ts │ ├── auth.service.ts │ ├── auth.validators.ts │ └── auth.routes.ts └── events/ # Events module ├── events.interfaces.ts ├── events.repository.ts ├── events.service.ts ├── events.validators.ts └── events.routes.ts
-
-markdown
-Copy
-
----
-
-## Scalability & Abstraction
-
-- **Caching:**  
-  The `getAllEvents` and `getEventById` service functions first attempt to retrieve data from Redis. On a cache miss, data is fetched from the database and then cached for future requests. This design minimizes database load under high usage.
-
-- **Pagination:**  
-  The API supports pagination through query parameters (e.g., `?page=1&pageSize=10`), enabling efficient handling of large datasets. Even though we start with a small number of events, this mechanism is in place for future growth.
-
-- **Abstraction Layers:**  
-  The repository layer abstracts all database operations and the cache service abstracts Redis operations. This means that if you decide to switch to another database or caching solution in the future, you only need to update these layers without modifying business logic in services or controllers.
-
-- **Unit Tests:**  
-  Comprehensive unit tests are written using Jest. External dependencies (like database and cache calls) are mocked to isolate and verify the business logic.
-
----
-
 ## Getting Started
 
 ### Prerequisites
